@@ -1,0 +1,161 @@
+.cart {
+    width: 66.66%;
+}
+.cart-grid {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+}
+.cart-product {
+    display: flex;
+}
+.cart-img {
+    width: 12vw;
+    height: calc(8vh + 2vw);
+    object-fit: cover;
+    margin-right: 2rem;
+}
+.cart-input {
+    width: 4rem;
+    align-self: center;
+}
+.cart-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 0;
+}
+h4 {
+    margin: 0;
+    font-weight: medium;
+}
+
+.cart-info > h4,
+small {
+    margin-bottom: 0.66rem;
+}
+small {
+    color: grey;
+}
+
+.cart-btn {
+    align-self: center;
+    font-size: 2.1em;
+    display: flex;
+    align-items: center;
+    max-height: 1.5em;
+    max-width: 1.5em;
+    color: rgb(177, 0, 0);
+    background: none;
+    border: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .cart-img {
+        display: none;
+    }
+}
+
+.cart {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5vh;
+    margin-bottom: 10vh;
+}
+
+.msg {
+    width: 100%;
+    margin-bottom: 10vh;
+    text-align: center;
+}
+
+.summary {
+    width: 25%;
+}
+
+.summary h4 {
+    font-weight: bold;
+    text-align: center;
+}
+.summary-info,
+.summary h4 {
+    border-bottom: 1px lightgray solid;
+    padding: 0.66em 0;
+    margin-bottom: 1em;
+}
+.summary-info,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.summary-info p:first-of-type {
+    color: gray;
+}
+.summary-info p:last-of-type {
+    font-weight: bold;
+}
+
+.summary-total {
+    margin-bottom: 1em;
+    padding: 0.66em 0;
+}
+
+.summary-total h3,
+.summary-total p {
+    font-weight: bold;
+}
+.summary-total h3,
+.summary-total p {
+    margin: 0;
+}
+.checkout-btn {
+    float: right;
+}
+
+.content-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary {
+    box-shadow: rgba(0, 0, 0, 0.13) 0px 0px 5px;
+    padding: 1em;
+    height: 0%;
+    border-radius: 0.33em;
+    transition: box-shadow 0.2s;
+}
+
+.summary:hover {
+    box-shadow: rgba(0, 0, 0, 0.13) 0px 0px 10px;
+}
+
+.creator-img {
+    width: 15em;
+    height: 15em;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    margin-top: 3.33vh;
+}
+
+@media only Screen and (max-width: 1000px) {
+    .content-flex {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart {
+        width: 100%;
+    }
+    .cart-info {
+        height: auto;
+    }
+
+    .summary {
+        width: 100%;
+    }
+}

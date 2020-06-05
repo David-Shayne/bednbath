@@ -1,0 +1,18 @@
+.category-btn {
+    width: 100%;
+    padding: 0.5em 0;
+    border-radius: 1em 0 1em 1em;
+    /* border-bottom-right-radius: 0; */
+}
+.category-btn-reverse {
+    border-radius: 0 1em 1em 1em;
+}
+
+.absolute-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.category-a {
+    width: 33%;
+}

@@ -1,0 +1,74 @@
+.Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20%;
+    row-gap: 10vh;
+}
+.inline {
+    display: inline-block;
+}
+.card-img {
+    width: 100%;
+    height: 35vh;
+    object-fit: cover;
+    transition: box-shadow 0.2s;
+}
+.card-img:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 1px 15px;
+}
+
+@media only screen and (max-width: 800px) {
+    .Grid {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modalTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.modalGrid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+}
+.modalImg {
+    width: 50%;
+    height: auto;
+    margin-left: 2em;
+    object-fit: cover;
+}
+.modalGrid p {
+    margin-right: 2em;
+    margin: 0;
+}
+.modalBtn {
+    width: 50%;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 120%;
+    margin-bottom: 1em;
+}
+.modalExitBtn {
+    border: none;
+    color: none;
+    background: none;
+    font-size: 150%;
+    position: absolute;
+    right: 1vw;
+    top: 0;
+}
+.modalExitBtn:focus {
+    outline: none;
+}
