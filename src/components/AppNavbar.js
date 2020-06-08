@@ -52,7 +52,7 @@ class AppNavbar extends Component {
                                 style={{ fontSize: '1.5em', color: 'black' }}
                             />
                             <span class="badge badge-pill badge-success">
-                                {this.props.cart.length}
+                                {this.props.cart.length || 0}
                             </span>
                         </NavLink>
                     </Container>
