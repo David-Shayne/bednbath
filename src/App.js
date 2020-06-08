@@ -14,7 +14,7 @@ function App() {
         <div className="App" style={{ fontFamily: 'Montserrat' }}>
             <Provider store={store}>
                 <AppNavbar />
-                <BrowserRouter basename="/React">
+                <Router basename="/">
                     <Switch>
                         <Route path="/bedroom">
                             <Bed />
@@ -29,7 +29,7 @@ function App() {
                             <Home />
                         </Route>
                     </Switch>
-                </BrowserRouter>
+                </Router>
             </Provider>
         </div>
     );
