@@ -1,6 +1,6 @@
 import axios from 'axios';
-const proxy = 'https://bednbath-server.herokuapp.com';
 import Cookies from 'universal-cookie';
+const proxy = 'https://bednbath-server.herokuapp.com';
 const cookie = new Cookies();
 
 export const getBedProducts = () => dispatch => {
