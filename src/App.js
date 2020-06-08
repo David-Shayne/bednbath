@@ -8,6 +8,13 @@ import Bath from './pages/Bath';
 import store from './store';
 import Cart from './pages/Cart';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+const cookie = new Cookies();
+
+if (!cookie.get('cart')) {
+    cookie.set('cart', []);
+    cart = [];
+}
 
 function App() {
     return (
