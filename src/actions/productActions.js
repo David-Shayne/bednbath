@@ -1,8 +1,11 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+const proxy = 'https://bednbath.herokuapp.com';
+const cookie = new Cookies();
 
 export const getBedProducts = () => dispatch => {
     dispatch(loading());
-    axios.get('/api/products/bedroom').then(products => {
+    axios.get(`${proxy}/api/products/bedroom`).then(products => {
         dispatch({
             type: 'GET_PRODUCTS_BED',
             payload: products.data
@@ -12,7 +15,7 @@ export const getBedProducts = () => dispatch => {
 
 export const getBathProducts = () => dispatch => {
     dispatch(loading());
-    axios.get('/api/products/bathroom').then(products => {
+    axios.get(`${proxy}/api/products/bathroom`).then(products => {
         dispatch({
             type: 'GET_PRODUCTS_BATH',
             payload: products.data
@@ -27,15 +30,14 @@ const loading = () => dispatch => {
 };
 
 export const getCart = () => dispatch => {
-    axios
-        .get('/api/cookie/cart')
-        .then(res =>
-            dispatch({
-                type: 'UPDATE_CART',
-                payload: res.data
-            })
-        )
-        .then(dispatch(updateTotal()));
+    const cart = cookie.get(`cart`);
+
+    dispatch({
+        type: 'UPDATE_CART',
+        payload: cart
+    });
+
+    dispatch(updateTotal());
 };
 
 export const addToCart = product => dispatch => {
@@ -46,64 +48,60 @@ export const addToCart = product => dispatch => {
 };
 
 export const saveCart = cart => dispatch => {
-    axios.post('/api/cookie/cart', cart);
+    cookie.set('cart', cart);
 };
 
 export const clearCart = () => dispatch => {
-    axios.delete('/api/cookie/cart').then(
-        dispatch({
-            type: 'CLEAR_CART'
-        })
-    );
+    cookie.set('cart', []);
+
+    dispatch({
+        type: 'CLEAR_CART'
+    });
 };
 
 export const updateCart = item => dispatch => {
-    axios
-        .get('/api/cookie/cart')
-        .then(res => {
-            const newCart = res.data.filter(
-                product => product._id !== item._id
-            );
+    const cart = cookie.get('cart');
 
-            axios.post('/api/cookie/cart', newCart).then(
-                dispatch({
-                    type: 'UPDATE_CART',
-                    payload: newCart
-                })
-            );
-        })
-        .then(dispatch(updateTotal()));
+    const newCart = cart.filter(product => product._id !== item._id);
+
+    cookie.set('cart', newCart);
+
+    dispatch({
+        type: 'UPDATE_CART',
+        payload: newCart
+    });
+
+    dispatch(updateTotal());
 };
 
 export const updateItemCount = (id, count) => dispatch => {
-    axios.get('/api/cookie/cart').then(res => {
-        const updatedProduct = res.data.filter(
-            product => product._id === id
-        )[0];
-        updatedProduct.count = count;
-        const newCart = [
-            ...res.data.filter(product => product._id !== id),
-            updatedProduct
-        ];
+    const cart = cookie.get('cart');
 
-        axios.post('/api/cookie/cart', newCart).then(() => {
-            dispatch(getCart());
-        });
-    });
+    // grabbing product from cart then updating the count
+    const updatedProduct = cart.filter(product => product._id === id)[0];
+    updatedProduct.count = count;
+
+    // removing product from cart and inserting updated product
+    const newCart = [
+        ...cart.filter(product => product._id !== id),
+        updatedProduct
+    ];
+
+    cookie.set('cart', newCart);
+    dispatch(getCart());
 };
 
 export const updateTotal = () => dispatch => {
-    axios.get('/api/cookie/cart').then(res => {
-        const cart = res.data;
-        let total = 0;
-        if (cart) {
-            cart.forEach(product => {
-                total += product.count * product.price;
-            });
-            dispatch({
-                type: 'UPDATE_TOTAL',
-                payload: total
-            });
-        }
-    });
+    const cart = cookie.get('cart');
+    let total = 0;
+
+    if (cart) {
+        cart.forEach(product => {
+            total += product.count * product.price;
+        });
+        dispatch({
+            type: 'UPDATE_TOTAL',
+            payload: total
+        });
+    }
 };
