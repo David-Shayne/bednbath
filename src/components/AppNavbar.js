@@ -18,6 +18,7 @@ class AppNavbar extends Component {
     componentDidMount() {
         this.props.getCart();
     }
+
     render() {
         return (
             <div style={{ marginBottom: '10vh' }}>
@@ -52,7 +53,7 @@ class AppNavbar extends Component {
                                 style={{ fontSize: '1.5em', color: 'black' }}
                             />
                             <span class="badge badge-pill badge-success">
-                                {this.props.cart.length || 0}
+                                {0}
                             </span>
                         </NavLink>
                     </Container>
