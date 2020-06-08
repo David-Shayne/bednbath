@@ -13,7 +13,7 @@ const cookie = new Cookies();
 
 let cart = cookie.get('cart');
 if (!cart) {
-    cookie.set('cart', [{ name: 'none' }]);
+    cookie.set('cart', []);
 }
 
 function App() {

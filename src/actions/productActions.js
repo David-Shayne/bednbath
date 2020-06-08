@@ -30,11 +30,8 @@ const loading = () => dispatch => {
 };
 
 export const getCart = () => dispatch => {
-    let cart = cookie.get(`cart`);
+    const cart = cookie.get(`cart`);
 
-    if (!cart) {
-        cookie.set('cart', [{ name: 'none' }]);
-    }
     dispatch({
         type: 'UPDATE_CART',
         payload: cart
