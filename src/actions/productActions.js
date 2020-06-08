@@ -3,6 +3,11 @@ import Cookies from 'universal-cookie';
 const proxy = 'https://bednbath-server.herokuapp.com';
 const cookie = new Cookies();
 
+if (!cookie.get('cart')) {
+    cookie.set('cart', []);
+    cart = [];
+}
+
 export const getBedProducts = () => dispatch => {
     dispatch(loading());
     axios.get(`${proxy}/api/products/bedroom`).then(products => {
@@ -30,7 +35,7 @@ const loading = () => dispatch => {
 };
 
 export const getCart = () => dispatch => {
-    const cart = cookie.get(`cart`);
+    let cart = cookie.get(`cart`);
 
     dispatch({
         type: 'UPDATE_CART',
