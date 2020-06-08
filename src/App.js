@@ -7,14 +7,14 @@ import Bed from './pages/Bed';
 import Bath from './pages/Bath';
 import store from './store';
 import Cart from './pages/Cart';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
     return (
         <div className="App" style={{ fontFamily: 'Montserrat' }}>
             <Provider store={store}>
                 <AppNavbar />
-                <Router basename="/">
+                <BrowserRouter basename="/">
                     <Switch>
                         <Route path="/bedroom">
                             <Bed />
@@ -29,7 +29,7 @@ function App() {
                             <Home />
                         </Route>
                     </Switch>
-                </Router>
+                </BrowserRouter>
             </Provider>
         </div>
     );
