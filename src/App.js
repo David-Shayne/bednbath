@@ -14,7 +14,7 @@ function App() {
         <div className="App" style={{ fontFamily: 'Montserrat' }}>
             <Provider store={store}>
                 <AppNavbar />
-                <BrowserRouter basename="/">
+                <BrowserRouter basename="/React">
                     <Switch>
                         <Route path="/bedroom">
                             <Bed />
