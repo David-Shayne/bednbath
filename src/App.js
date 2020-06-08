@@ -11,9 +11,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 const cookie = new Cookies();
 
-if (!cookie.get('cart')) {
-    cookie.set('cart', []);
-    cart = [];
+let cart = cookie.get('cart');
+if (!cart) {
+    cookie.set('cart', [{ name: 'none' }]);
 }
 
 function App() {
