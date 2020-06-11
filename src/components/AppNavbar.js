@@ -28,7 +28,7 @@ class AppNavbar extends Component {
                             href="https://davidshayne.co.za"
                             style={{ color: 'grey', paddingLeft: '0' }}
                         >
-                            My Portfolio
+                            <span className="hide-small">My</span> Portfolio
                         </NavLink>
 
                         <h1

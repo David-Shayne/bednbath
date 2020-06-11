@@ -16,3 +16,9 @@
 .category-a {
     width: 33%;
 }
+
+@media only Screen and (max-width: 800px) {
+    .hide-small {
+        display: none;
+    }
+}
